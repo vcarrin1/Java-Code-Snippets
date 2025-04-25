@@ -14,7 +14,7 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	   // Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+	// Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
     public static boolean containsDuplicate(int[] nums) {
         Map<Integer, Integer> countMap = new HashMap<>();
         for (int num : nums) {
@@ -50,12 +50,10 @@ public class Application {
     }
 
     // Swap Two Numbers
+    // (b = a) assigns the value of a to b and returns the value of a.
+    // a + b computes the sum of the original a and b.
+    // Subtracting (b = a) from (a + b) effectively assigns the original value of b to a.
     public static void swapTwoNumbers(int a, int b) {
-        // Logic of XOR operator
-//        a = a ^ b;
-//        b = a ^ b;
-//        a = a ^ b;
-
         // Using arithmetic operators
         a = (a + b) - (b = a);
         System.out.println("Value of a is " + a + " and Value of b is " + b);
@@ -177,4 +175,57 @@ public class Application {
         }
     }
 
+    // Count vowels in a string
+    // int count = countVowels("hello");
+    // System.out.println("Number of vowels: " + count);
+    public static int countVowels(String str) {
+        int count = 0;
+        String vowels = "aeiouAEIOU";
+        for (int i = 0; i < str.length(); i++) {
+            if (vowels.indexOf(str.charAt(i)) != -1) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    // check if a vowel is present in a string
+    // Boolean exists = checkIfVowelPresentInString("e", "hello");
+    // System.out.println("Vowel exists: " + exists);
+    public static boolean checkIfVowelPresentInString(String vowel, String str) {
+        for (int i = 0; i < str.length(); i++) {
+            if (vowel.length() == 1 && str.indexOf(str.charAt(i)) != -1) {
+                return str.contains(vowel);
+            }
+        }
+        return false;
+    }
+
+    // A prime number is a natural number greater than 1 that has no divisors
+    // other than 1 and itself. In other words, a prime number can only be divided evenly 
+    // (without a remainder) by 1 and the number itself.
+
+    // For n = 7:
+
+    // n is not 0 or 1, so it skips the first condition.
+    // n is not 2, so it skips the second condition.
+    // The loop checks divisors from 2 to 7 / 2 = 3. 
+    // Since 7 is not divisible by 2 or 3, the method returns true.
+
+     // check if a number is prime
+    public static boolean isPrime(int n) {
+        if (n == 0 || n == 1) {
+         return false;
+        }
+        if (n == 2) {
+         return true;
+        }
+        for (int i = 2; i <= n / 2; i++) {
+         if (n % i == 0) {
+          return false;
+         }
+        }
+      
+        return true;
+       }
 }
