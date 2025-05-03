@@ -1,4 +1,4 @@
-package com.vcarrin87.java.code.snippets;
+package com.vcarrin87;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
