@@ -29,8 +29,6 @@ public class CodeProblems {
             x /= 10;
 
         }
-
-        System.out.println(reversedNum);
     
         // Compare the reversed number with the original
         return reversedNum == originalNum;
@@ -81,10 +79,11 @@ public class CodeProblems {
     // (b = a) assigns the value of a to b and returns the value of a.
     // a + b computes the sum of the original a and b.
     // Subtracting (b = a) from (a + b) effectively assigns the original value of b to a.
-    public static void swapTwoNumbers(int a, int b) {
+    public static int[] swapTwoNumbers(int a, int b) {
         // Using arithmetic operators
         a = (a + b) - (b = a);
         System.out.println("Value of a is " + a + " and Value of b is " + b);
+        return new int[] { a, b };
     }
 
     // Find Factorial of a Number in Java.
@@ -100,7 +99,7 @@ public class CodeProblems {
     }
 
     // Compute the Sum of Array Elements
-    public static int sum(int[] nums) {
+    public static int sumArrayElements(int[] nums) {
         // Arrays.stream(nums).sum();
         int result = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -208,19 +207,15 @@ public class CodeProblems {
                 count++;
             }
         }
+
         return count;
     }
 
     // check if a vowel is present in a string
     // Boolean exists = checkIfVowelPresentInString("e", "hello");
     // System.out.println("Vowel exists: " + exists);
-    public static boolean checkIfVowelPresentInString(String vowel, String str) {
-        for (int i = 0; i < str.length(); i++) {
-            if (vowel.length() == 1 && str.indexOf(str.charAt(i)) != -1) {
-                return str.contains(vowel);
-            }
-        }
-        return false;
+    public static boolean checkIfVowelPresentInString(char vowel, String str) {
+        return str.indexOf(vowel) != -1;
     }
 
     // A prime number is a natural number greater than 1 that has no divisors
