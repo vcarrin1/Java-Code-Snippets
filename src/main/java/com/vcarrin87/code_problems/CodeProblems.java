@@ -54,6 +54,30 @@ public class CodeProblems {
         return false;
     }
 
+    // Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place 
+    // such that each unique element appears only once. The relative order of the elements should be 
+    // kept the same. Then return the number of unique elements in nums.
+    public static int removeDuplicates(int[] nums) {
+        // if the array is empty, return 0
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 1; // Start from the second element
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[uniqueIndex] = nums[i];
+                uniqueIndex++;
+            }
+        }
+
+        System.out.println("Unique elements: " + Arrays.toString(Arrays.copyOf(nums, uniqueIndex)));
+
+        return uniqueIndex;
+    }
+
+
     // Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
     // You may assume that each input would have exactly one solution, and you may not use the same element twice.
     // You can return the answer in any order.
@@ -132,6 +156,27 @@ public class CodeProblems {
         // Create a copy of nums[]
         return Arrays.copyOf(nums, index);
         // System.out.println(Arrays.toString(sumOfAll));
+    }
+
+    // Given an integer array nums and an integer val, remove all occurrences of val in nums in-place.
+    // The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+    public static int removeElement(int[] nums, int val) {
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (val != nums[i]) {
+                nums[index++] = nums[i];
+            }
+        }
+        System.out.println("index: " + index);
+        // return the number of elements in nums which are not equal to val.
+        return index;
+    }
+
+    // Given a string s consisting of words and spaces, return the length of the last word in the string.
+    public static int lengthOfLastWord(String s) {
+        String[] array = s.split(" ");
+        String last = array[array.length - 1];
+        return last.length();
     }
 
     // reverse a string

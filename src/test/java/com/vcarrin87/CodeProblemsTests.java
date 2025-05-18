@@ -3,6 +3,8 @@ package com.vcarrin87;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -44,6 +46,38 @@ class CodeProblemsTests {
 
         assertTrue(CodeProblems.containsDuplicate(numsWithDuplicates));
         assertFalse(CodeProblems.containsDuplicate(numsWithoutDuplicates));
+    }
+
+    @Test
+    void testRemoveDuplicates() {
+        int[] nums = {1, 1, 2, 3, 4, 4, 5};
+        int expectedLength = 5;
+        int[] expectedArray = {1, 2, 3, 4, 5};
+
+        int length = CodeProblems.removeDuplicates(nums);
+        assertEquals(expectedLength, length);
+        assertArrayEquals(expectedArray, Arrays.copyOf(nums, length));
+    }
+
+    @Test
+    void testRemoveElement() {
+        int[] nums = {3, 2, 2, 3};
+        int val = 3;
+        int expectedLength = 2;
+        int[] expectedArray = {2, 2};
+
+        int length = CodeProblems.removeElement(nums, val);
+        assertEquals(expectedLength, length);
+        assertArrayEquals(expectedArray, Arrays.copyOf(nums, length));
+    }
+
+    @Test
+    void testLengthOfLastWord() {
+        String str = "Hello World";
+        int expectedLength = 5;
+
+        int result = CodeProblems.lengthOfLastWord(str);
+        assertEquals(expectedLength, result);
     }
 
     @Test
