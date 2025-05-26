@@ -208,5 +208,12 @@ class CodeProblemsTests {
         result = CodeProblems.checkIfVowelPresentInString(vowel, str);
         assertFalse(result);
     }
+
+    @Test
+    void testIsNeedleInHaystack() {
+        assertEquals(2, CodeProblems.isNeedleInHaystack("hello", "ll"));
+        assertEquals(-1, CodeProblems.isNeedleInHaystack("aaaaa", "bba"));
+        assertEquals(-1, CodeProblems.isNeedleInHaystack("abc", "d"));
+    }
     
 }
