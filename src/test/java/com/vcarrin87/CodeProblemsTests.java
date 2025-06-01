@@ -215,5 +215,36 @@ class CodeProblemsTests {
         assertEquals(-1, CodeProblems.isNeedleInHaystack("aaaaa", "bba"));
         assertEquals(-1, CodeProblems.isNeedleInHaystack("abc", "d"));
     }
+
+    @Test
+    void testSortArrayInDescendingOrder() {
+        int[] arr = {5, 3, 8, 1, 2, 10};
+        int[] expected = {10, 8, 5, 3, 2, 1};
+
+        int[] result = CodeProblems.sortArrayInDescendingOrder(arr);
+        assertArrayEquals(expected, result);
+    }
+
+    @Test
+    void testFindMaxValue() {
+        int[] arr = {1, 2, 3, 4, 5};
+        int result = CodeProblems.findMaxValue(arr);
+        assertEquals(5, result);
+
+        arr = new int[]{-1, -2, -3, -4, -5};
+        result = CodeProblems.findMaxValue(arr);
+        assertEquals(-1, result);
+    }
+
+    @Test
+    void testFindMinValue() {
+        int[] arr = {1, 2, 3, 4, 5};
+        int result = CodeProblems.findMinValue(arr);
+        assertEquals(1, result);
+
+        arr = new int[]{-1, -2, -3, -4, -5};
+        result = CodeProblems.findMinValue(arr);
+        assertEquals(-5, result);
+    }
     
 }

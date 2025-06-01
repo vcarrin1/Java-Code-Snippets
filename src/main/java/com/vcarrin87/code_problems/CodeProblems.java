@@ -296,4 +296,48 @@ public class CodeProblems {
     public static int isNeedleInHaystack(String haystack, String needle) {
         return haystack.indexOf(needle);
     }
+
+    // Sort primitive arrays in Java in descending order
+    public static int[] sortArrayInDescendingOrder(int[] arr) {
+        Arrays.sort(arr);
+        // iterate from the start of the array up to its midpoint (arr.length / 2)
+        // ensuring that each element is swapped only once with its corresponding element from the end of the array.
+        for (int i = 0; i < arr.length / 2; i++) {
+            int temp = arr[i];
+            // swap the elements at index i and (arr.length - 1 - i)
+            arr[i] = arr[arr.length - 1 - i];
+            // assign the value of temp to the element at index (arr.length - 1 - i)
+            arr[arr.length - 1 - i] = temp;
+        }
+        System.out.println("Sorted array in descending order: " + Arrays.toString(arr));
+        return arr;
+    }
+
+    // Find the maximum value in an array
+    public static int findMaxValue(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            throw new IllegalArgumentException("Array must not be null or empty");
+        }
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+    
+    // Find the minimum value in an array   
+    public static int findMinValue(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            throw new IllegalArgumentException("Array must not be null or empty");
+        }
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        return min;
+    }
 }
