@@ -42,10 +42,11 @@ public class Main {
 }
 
 /*
-Retrieved 5 weather reports:
-WeatherData { city='London', current=Current { fahrenheit temp=64.9, humidity=52 } }
-WeatherData { city='Tokyo', current=Current { fahrenheit temp=63.1, humidity=88 } }
-WeatherData { city='Denver', current=Current { fahrenheit temp=85.6, humidity=23 } }
-WeatherData { city='Paris', current=Current { fahrenheit temp=66.2, humidity=68 } }
-WeatherData { city='Chisinau', current=Current { fahrenheit temp=70.5, humidity=60 } }
+* Output:
+    Retrieved 5 weather reports:
+    WeatherData { city='London', current=Current { fahrenheit temp=64.9, humidity=52 } }
+    WeatherData { city='Tokyo', current=Current { fahrenheit temp=63.1, humidity=88 } }
+    WeatherData { city='Denver', current=Current { fahrenheit temp=85.6, humidity=23 } }
+    WeatherData { city='Paris', current=Current { fahrenheit temp=66.2, humidity=68 } }
+    WeatherData { city='Chisinau', current=Current { fahrenheit temp=70.5, humidity=60 } }
  */

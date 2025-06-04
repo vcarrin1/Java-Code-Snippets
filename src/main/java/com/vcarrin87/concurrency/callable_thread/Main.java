@@ -74,10 +74,11 @@ public class Main {
 }
 
 /*
-City: London, Temp: 64.6°F, Humidity: 52%
-City: Paris, Temp: 66.6°F, Humidity: 68%
-City: Denver, Temp: 85.6°F, Humidity: 23%
-[ALERT] Heatwave in Denver: 85.6
-City: Tokyo, Temp: 62.6°F, Humidity: 88%
-City: Chisinau, Temp: 69.8°F, Humidity: 60%
+* Output:
+    City: London, Temp: 64.6°F, Humidity: 52%
+    City: Paris, Temp: 66.6°F, Humidity: 68%
+    City: Denver, Temp: 85.6°F, Humidity: 23%
+    [ALERT] Heatwave in Denver: 85.6
+    City: Tokyo, Temp: 62.6°F, Humidity: 88%
+    City: Chisinau, Temp: 69.8°F, Humidity: 60%
  */
