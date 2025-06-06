@@ -1,6 +1,8 @@
 package com.vcarrin87.code_problems;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +29,6 @@ public class CodeProblems {
             reversedNum = reversedNum * 10 + digit;
             // the /= operator is a shorthand for division followed by assignment
             x /= 10;
-
         }
     
         // Compare the reversed number with the original
@@ -326,7 +327,7 @@ public class CodeProblems {
         }
         return max;
     }
-    
+
     // Find the minimum value in an array   
     public static int findMinValue(int[] arr) {
         if (arr == null || arr.length == 0) {
@@ -339,5 +340,190 @@ public class CodeProblems {
             }
         }
         return min;
+    }
+
+     public static int[] plusOne(int[] digits) {
+        long sum = 0;
+        long result = 0;
+        System.out.println("Initial array: " + Arrays.toString(digits));
+        for (int digit : digits) {
+            // 9,8,7,6,5,4,3,2,1,0
+            // Multiply the current sum by 10 and add the current digit
+            // This effectively shifts the previous digits to the left and adds the new digit at the end
+            // For example, if digits = [1, 2, 3], the sum will be calculated as follows:
+            // sum = 0 * 10 + 1 = 1
+            // sum = 1 * 10 + 2 = 12
+            // sum = 12 * 10 + 3 = 123
+            sum = sum * 10 + digit;
+        }
+        System.out.println("Sum of digits: " + sum);
+        result = sum + 1;
+        System.out.println(result);
+
+        // Convert the result back to an array of digits
+        // For example, if result = 123, the resultStr will be "124"
+        // and resultArr will be [1, 2, 4]
+        String resultStr = String.valueOf(result);
+        int[] resultArr = new int[resultStr.length()];
+
+        // start the loop from the end of the resultStr
+        for (int i = resultStr.length() - 1; i >= 0; i--) {
+            // Convert each character to an integer and store it in the resultArr
+            // For example, if resultStr = "124", the loop will fill resultArr as follows:
+            // resultArr[2] = 4
+            // resultArr[1] = 2
+            // resultArr[0] = 1
+            resultArr[i] = (int) (result % 10);
+            result /= 10;
+        }
+
+        System.out.println("Result array after adding one: " + Arrays.toString(resultArr));
+        return resultArr;
+    }
+
+    /**
+     * The square root of a number x is a value y such that y * y = x.
+     * For example, the square root of 9 is 3, because 3 * 3 = 9.
+     * In Java, you can compute the square root using Math.sqrt(x).
+     */
+    public static int mySqrt(int x) {
+        return (int) Math.sqrt(x);
+    }
+
+
+    public static String simplifyPath(String path) {
+        Deque<String> deque = new ArrayDeque<>();
+        String[] parts = path.split("/");
+        
+        for (String part : parts) {
+            if (part.isEmpty() || part.equals(".")) {
+                continue;
+            } else if (part.equals("..")) {
+                if (!deque.isEmpty()) {
+                    deque.pollLast();
+                }
+            } else {
+                deque.addLast(part);
+            }
+        }
+        
+        if (deque.isEmpty()) {
+            return "/";
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        for (String dir : deque) {
+            sb.append("/").append(dir);
+        }
+        return sb.toString();
+    }
+
+    public static int sumFirstAndLastDigit(int number) {
+        if (number < 0) return -1;
+        
+        String resultStr = String.valueOf(number);
+        int[] resultArr = new int[resultStr.length()];
+
+        // start the loop from the end of the resultStr
+        for (int i = resultStr.length() - 1; i >= 0; i--) {
+            resultArr[i] = number % 10;
+            number /= 10;
+        }
+        
+        int firstDigit = resultArr[0];
+        int lastDigit = resultArr[resultArr.length - 1];
+
+        int result = firstDigit + lastDigit;
+
+        System.out.println("Result array: " + Arrays.toString(resultArr) + " result: " + result);
+        
+        return result;
+    }
+
+    // Calculating The Sum Of All Even Digits In An Integer
+    public static int getEvenDigitSum(int number) {
+        if (number < 0) return -1;
+        
+        String numberString = String.valueOf(number);
+        int[] numberArr = new int[numberString.length()];
+
+        int sum = 0;
+
+        for (int i = numberString.length() - 1; i >= 0; i--) {
+            // Convert each character to an integer and store it in the numberArr
+            numberArr[i] = number % 10;
+            number /= 10;
+        }
+
+        System.out.println("Number array: " + Arrays.toString(numberArr));
+
+        for (int num : numberArr) {
+            // Check if the number is even
+            // example: 6 % 2 == 0 then it has no remainder, so it is an even number
+            if (num % 2 == 0) {
+                sum += num;
+            }
+        }
+        
+        return sum;
+    }
+
+    // Calculate the sum of all odd digits in an integer
+    public static int getOddDigitSum(int number) {
+        if (number < 0) return -1;
+        
+        String numberString = String.valueOf(number);
+        int[] numberArr = new int[numberString.length()];
+
+        int sum = 0;
+
+        for (int i = numberString.length() - 1; i >= 0; i--) {
+            // Convert each character to an integer and store it in the numberArr
+            numberArr[i] = number % 10;
+            number /= 10;
+        }
+
+        System.out.println("Number array: " + Arrays.toString(numberArr));
+
+        for (int num : numberArr) {
+            // Check if the number is odd
+            // example: 5 % 2 != 0 then it has a remainder, so it is an odd number
+            if (num % 2 != 0) {
+                sum += num;
+            }
+        }
+        
+        return sum;
+    }
+
+    // Check if a number is a two-digit number
+    public static boolean isTwoDigitNumber(int number) {
+        // Check if the number is between 10 and 99 (inclusive)
+        return number >= 10 && number <= 99;
+    }
+    
+    // Check if a number is a three-digit number
+    public static boolean isThreeDigitNumber(int number) {
+        // Check if the number is between 100 and 999 (inclusive)
+        return number >= 100 && number <= 999;
+    }
+
+    // Check For A Shared Digit Between Two Numbers
+    public static boolean hasSharedDigit(int num1, int num2) {
+        if (!(num1 >= 10 && num1 <= 99) || !(num2 >= 10 && num2 <= 99)) return false;
+        
+        String s1 = String.valueOf(num1);
+        String s2 = String.valueOf(num2);
+        
+        boolean shareDigit = false;
+        // s1.toCharArray() converts the string into an array of characters
+        for (char c : s1.toCharArray()) {
+            if (s2.indexOf(c) != -1) {
+                shareDigit = true;
+                break;
+            }
+        }
+        
+        return shareDigit;
     }
 }

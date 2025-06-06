@@ -247,4 +247,105 @@ class CodeProblemsTests {
         assertEquals(-5, result);
     }
     
+    @Test
+    void testPlusOne() {
+        int[] digits = {1, 2, 3};
+        int[] expected = {1, 2, 4};
+
+        int[] result = CodeProblems.plusOne(digits);
+        assertArrayEquals(expected, result);
+
+        digits = new int[]{9, 9, 9};
+        expected = new int[]{1, 0, 0, 0};
+
+        result = CodeProblems.plusOne(digits);
+        assertArrayEquals(expected, result);
+
+        digits = new int[]{9,8,7,6,5,4,3,2,1,0};
+        expected = new int[]{9,8,7,6,5,4,3,2,1,1};
+        result = CodeProblems.plusOne(digits);
+        assertArrayEquals(expected, result);
+    }
+
+    @Test
+    void testMySqrt() {
+        assertEquals(2, CodeProblems.mySqrt(4));
+        assertEquals(3, CodeProblems.mySqrt(9));
+        assertEquals(5, CodeProblems.mySqrt(25));
+        assertEquals(6, CodeProblems.mySqrt(36));
+        assertEquals(7, CodeProblems.mySqrt(49));
+        assertEquals(8, CodeProblems.mySqrt(64));
+        assertEquals(9, CodeProblems.mySqrt(81));
+        assertEquals(10, CodeProblems.mySqrt(100));
+    }
+
+    @Test
+    void testSimplifyPath() {
+        assertEquals("/c", CodeProblems.simplifyPath("/a/./b/../../c/"));
+        assertEquals("/", CodeProblems.simplifyPath("/../"));
+        assertEquals("/", CodeProblems.simplifyPath(""));
+        assertEquals("/home/foo", CodeProblems.simplifyPath("/home//foo/"));
+        assertEquals("/a/b/c", CodeProblems.simplifyPath("/a/b/c/"));
+        assertEquals("/a/b/c/d", CodeProblems.simplifyPath("/a/b/c/d/"));
+    }
+
+    @Test
+    void testSumFirstAndLastDigit() {
+        assertEquals(4, CodeProblems.sumFirstAndLastDigit(252));
+        assertEquals(9, CodeProblems.sumFirstAndLastDigit(257));
+        assertEquals(4, CodeProblems.sumFirstAndLastDigit(13));
+        assertEquals(0, CodeProblems.sumFirstAndLastDigit(0));
+        assertEquals(10, CodeProblems.sumFirstAndLastDigit(5));
+        assertEquals(-1, CodeProblems.sumFirstAndLastDigit(-10));
+    }
+
+    @Test
+    void testGetEvenDigitSum() {
+        assertEquals(20, CodeProblems.getEvenDigitSum(123456789));
+        assertEquals(0, CodeProblems.getEvenDigitSum(13579));
+        assertEquals(20, CodeProblems.getEvenDigitSum(24680));
+        assertEquals(0, CodeProblems.getEvenDigitSum(0));
+        assertEquals(-1, CodeProblems.getEvenDigitSum(-12345));
+    }
+
+    @Test
+    void testGetOddDigitSum() {
+        assertEquals(25, CodeProblems.getOddDigitSum(123456789));
+        assertEquals(25, CodeProblems.getOddDigitSum(13579));
+        assertEquals(0, CodeProblems.getOddDigitSum(24680));
+        assertEquals(0, CodeProblems.getOddDigitSum(0));
+        assertEquals(-1, CodeProblems.getOddDigitSum(-12345));
+    }
+
+    @Test
+    void testIsTwoDigitNumber() {
+        assertTrue(CodeProblems.isTwoDigitNumber(12));
+        assertTrue(CodeProblems.isTwoDigitNumber(99));
+        assertFalse(CodeProblems.isTwoDigitNumber(9));
+        assertFalse(CodeProblems.isTwoDigitNumber(100));
+        assertFalse(CodeProblems.isTwoDigitNumber(-12));
+        assertFalse(CodeProblems.isTwoDigitNumber(0));
+    }
+
+    @Test
+    void testIsThreeDigitNumber() {
+        assertTrue(CodeProblems.isThreeDigitNumber(123));
+        assertTrue(CodeProblems.isThreeDigitNumber(999));
+        assertFalse(CodeProblems.isThreeDigitNumber(99));
+        assertFalse(CodeProblems.isThreeDigitNumber(1000));
+        assertFalse(CodeProblems.isThreeDigitNumber(-123));
+        assertFalse(CodeProblems.isThreeDigitNumber(0));
+    }
+
+    @Test
+    void testHasSharedDigit() {
+        assertTrue(CodeProblems.hasSharedDigit(12, 23));
+        assertTrue(CodeProblems.hasSharedDigit(12, 21));
+        assertTrue(CodeProblems.hasSharedDigit(10, 11));
+
+        assertFalse(CodeProblems.hasSharedDigit(12, 34));
+        assertFalse(CodeProblems.hasSharedDigit(9, 99));
+        assertFalse(CodeProblems.hasSharedDigit(-1, 10));
+        assertFalse(CodeProblems.hasSharedDigit(10, -1));
+    }
 }
