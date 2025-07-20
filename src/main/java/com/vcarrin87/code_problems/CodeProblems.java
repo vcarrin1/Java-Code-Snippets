@@ -6,6 +6,8 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.vcarrin87.linked_list.SingleNode;
+
 public class CodeProblems {
 
     private CodeProblems() {
@@ -525,5 +527,35 @@ public class CodeProblems {
         }
         
         return shareDigit;
+    }
+
+    // You are given two non-empty linked lists representing two non-negative integers. 
+    // The digits are stored in reverse order, and each of their nodes contains a single digit. 
+    // Add the two numbers and return the sum as a linked list.
+    public static SingleNode addTwoNumbers(SingleNode l1, SingleNode l2) {
+        SingleNode head = new SingleNode(0);
+        SingleNode current = head;
+        int carry = 0;
+
+        while (l1 != null || l2 != null || carry != 0) {
+            int val1 = (l1 != null) ? l1.data : 0;
+            int val2 = (l2 != null) ? l2.data : 0;
+
+            int sum = val1 + val2 + carry;
+            carry = sum / 10; // New carry for the next iteration
+            int digit = sum % 10; // Digit for the current node
+            System.out.println("Adding: " + val1 + " + " + val2 + " + " + carry + " = " + sum + ", digit = " + digit + ", carry = " + carry);
+
+            current.next = new SingleNode(digit); // Create and link new node
+            current = current.next; // Move current pointer
+
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+        }
+        return head.next;
     }
 }

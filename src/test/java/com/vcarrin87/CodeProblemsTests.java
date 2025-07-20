@@ -1,6 +1,7 @@
 package com.vcarrin87;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
@@ -11,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import com.vcarrin87.code_problems.CodeProblems;
+import com.vcarrin87.linked_list.SingleNode;
 
 @SpringBootTest
 class CodeProblemsTests {
@@ -347,5 +349,54 @@ class CodeProblemsTests {
         assertFalse(CodeProblems.hasSharedDigit(9, 99));
         assertFalse(CodeProblems.hasSharedDigit(-1, 10));
         assertFalse(CodeProblems.hasSharedDigit(10, -1));
+    }
+
+    @Test
+    void testAddTwoNumbers() {
+        System.out.println("Testing l1 = [2], l2 = [3]");
+        // l1 = [2], l2 = [3]
+        SingleNode node1 = new SingleNode(2);
+        SingleNode node2 = new SingleNode(3);
+        SingleNode result = CodeProblems.addTwoNumbers(node1, node2);
+        
+        assertEquals(5, result.data); // 2 + 3 = 5
+        assertNull(result.next); // Ensure no next node
+
+        System.out.println("Testing l1 = [9], l2 = [1]");
+        // Test with carry
+        // l1 = [9], l2 = [1]
+        node1 = new SingleNode(9);
+        node2 = new SingleNode(1);
+        result = CodeProblems.addTwoNumbers(node1, node2);          
+
+        assertEquals(0, result.data); // 9 + 1 = 10, so we store 0 and carry 1
+        assertEquals(1, result.next.data); // The carry node should be 1
+        assertNull(result.next.next); // Ensure no further nodes
+
+        System.out.println("Testing l1 = [2, 4], l2 = [3, 6]");
+        // l1 = [2, 4], l2 = [3, 6]
+        // 2 + 3 = 5, 4 + 6 = 10, so result is [5, 0, 1] (since 10 = 0, carry 1 to next node)
+        node1 = new SingleNode(2);
+        node1.next = new SingleNode(4);
+        node2 = new SingleNode(3);
+        node2.next = new SingleNode(6);
+        result = CodeProblems.addTwoNumbers(node1, node2);                  
+
+        assertEquals(5, result.data); // 2 + 3 = 5
+        assertEquals(0, result.next.data); // 4 + 6 = 10
+        assertEquals(1, result.next.next.data); // Carry 1
+        assertNull(result.next.next.next); // Ensure no further nodes
+
+        System.out.println("Testing l1 = [2, 9], l2 = [3]");
+        // l1 = [2, 9], l2 = [3]
+        // 2 + 3 = 5, 9 + 0 = 9, so result is [5, 9]
+        node1 = new SingleNode(2);
+        node1.next = new SingleNode(9);
+        node2 = new SingleNode(3);
+        result = CodeProblems.addTwoNumbers(node1, node2);  
+
+        assertEquals(5, result.data); // 2 + 3 = 5
+        assertEquals(9, result.next.data); // 9 + 0 = 9
+        assertNull(result.next.next); // Ensure no further nodes
     }
 }
